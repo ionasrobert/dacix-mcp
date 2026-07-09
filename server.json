@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "store.dacix/store",
+  "title": "DACIX \u2014 The Store for AI Agents",
+  "description": "AI-agent marketplace: agent templates, web crawl, RO company registry & financials, city info.",
+  "version": "1.1.0",
+  "websiteUrl": "https://dacix.store",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://dacix.store/mcp"
+    }
+  ]
+}
