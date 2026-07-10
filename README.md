@@ -6,14 +6,10 @@
 - **Registry:** published in the [official MCP registry](https://registry.modelcontextprotocol.io) as `store.dacix/store`
 - **Docs:** [OpenAPI](https://dacix.store/docs) · [llms.txt](https://dacix.store/llms.txt) · [agents.json](https://dacix.store/.well-known/agents.json)
 
-## Connect
+## Configuration
 
-**Claude Code**
-```bash
-claude mcp add --transport http dacix https://dacix.store/mcp
-```
+Add DACIX to any MCP client that supports streamable HTTP (Claude Desktop, Cursor, Windsurf, ...):
 
-**Claude Desktop / other MCP clients** (streamable HTTP):
 ```json
 {
   "mcpServers": {
@@ -25,32 +21,31 @@ claude mcp add --transport http dacix https://dacix.store/mcp
 }
 ```
 
+**Claude Code** one-liner:
+
+```bash
+claude mcp add --transport http dacix https://dacix.store/mcp
+```
+
 No connection parameters needed — your agent creates its own account with the `store_register` tool and receives an API key plus **25 free credits**.
 
-## Tools (15)
+## Tools
 
-### Store
-| Tool | What it does |
-|---|---|
-| `store_catalog` | List everything for sale (no auth) |
-| `store_register` | Create an account → API key + 25 free credits |
-| `store_account` | Credit balance + owned templates |
-| `store_buy` | Buy a product → Stripe checkout URL |
-| `store_order_status` | Poll an order (pending → paid) |
-| `store_download_template` | Download a purchased agent template |
-
-### Pay-per-call data services (credits)
-| Tool | Cost | What it does |
-|---|---|---|
-| `web_crawl` | 5 cr | Any public page → clean readable text |
-| `ro_company_lookup` | 10 cr | Romanian company registry profile by CUI (~2M companies: active/struck-off, VAT, CAEN, address) |
-| `ro_company_search` | 10 cr | Search Romanian companies by name |
-| `ro_company_search_by_address` | 10 cr | Every company registered at an address (due diligence) |
-| `ro_company_financials` | 20 cr | Multi-year financials: turnover, profit, employees, assets |
-| `ro_company_list` | 10 cr/page | Browse companies filtered by county / active / VAT |
-| `city_info` | 5 cr | Civic info for 28,674 cities as markdown (parking, events, transport, laws…) |
-| `classified_categories` | free | Category tree of micapublicitate.online |
-| `post_classified_ad` | 20 cr | Publish a real 90-day classified ad on micapublicitate.online |
+- **store_catalog**: List everything for sale at dacix.store — agent templates (portable JSON agent definitions) and API credit packs. No auth needed.
+- **store_register**: Create a DACIX account and get an API key (`dacix_sk_...`) plus 25 free trial credits.
+- **store_account**: Check your account — credit balance and owned templates.
+- **store_buy**: Buy a product — returns a Stripe checkout URL; fulfillment is automatic after payment.
+- **store_order_status**: Check an order's status after payment (pending → paid).
+- **store_download_template**: Download a purchased agent template (full JSON: system prompt, tools, schemas).
+- **web_crawl**: Fetch any public web page server-side and get clean readable text back. 5 credits.
+- **ro_company_lookup**: Romanian company registry profile by CUI (tax ID) — legal name, active/struck-off status, VAT registration, CAEN, address. ~2M companies. 10 credits.
+- **ro_company_search**: Search Romanian companies by name — returns CUI, legal form, county, status per match. 10 credits.
+- **ro_company_search_by_address**: Find every Romanian company registered at an address (due diligence: who is registered here?). 10 credits.
+- **ro_company_financials**: Yearly financials for a Romanian company by CUI — net turnover, profit/loss, employees, equity, assets, debt, multi-year history. 20 credits.
+- **ro_company_list**: Browse Romanian companies with filters — county, active vs struck-off, VAT-registered. Paginated. 10 credits/page.
+- **classified_categories**: Category tree of micapublicitate.online (Romanian classifieds) — pick a category before posting an ad. Free.
+- **post_classified_ad**: Publish a real classified ad on micapublicitate.online (90-day listing) — returns the public URL. 20 credits.
+- **city_info**: Practical civic info for 28,674 cities worldwide as clean markdown — parking, events, public transport, city hall, laws, quiet hours and ~30 more topics. 5 credits.
 
 Failed lookups (not found / upstream errors) are **never charged**.
 
