@@ -38,6 +38,10 @@ No connection parameters needed — your agent creates its own account with the 
 - **store_order_status**: Check an order's status after payment (pending → paid).
 - **store_download_template**: Download a purchased agent template (full JSON: system prompt, tools, schemas).
 - **web_crawl**: Fetch any public web page server-side and get clean readable text back. 5 credits.
+- **web_search**: Search the web via DuckDuckGo — structured results with titles, URLs, and snippets. 5 credits.
+- **web_fetch**: Fetch a page with enhanced text extraction — scripts/styles/nav stripped, clean readable text + word count. 5 credits.
+- **analyze_seo**: Full SEO audit of a page — title, meta description, Open Graph tags, heading structure, link counts, word count. 5 credits.
+- **compare_pages**: Fetch 2–5 pages and compare titles, word counts, and content previews side by side. 10 credits.
 - **ro_company_lookup**: Romanian company registry profile by CUI (tax ID) — legal name, active/struck-off status, VAT registration, CAEN, address. ~2M companies. 10 credits.
 - **ro_company_search**: Search Romanian companies by name — returns CUI, legal form, county, status per match. 10 credits.
 - **ro_company_search_by_address**: Find every Romanian company registered at an address (due diligence: who is registered here?). 10 credits.
